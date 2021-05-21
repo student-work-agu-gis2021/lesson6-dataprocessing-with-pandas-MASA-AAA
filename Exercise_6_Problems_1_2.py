@@ -137,7 +137,7 @@ print('Average temperature (F) for the Summer of 69:', round(avg_temp_1969, 2))
 monthly_data = None
 
 # YOUR CODE HERE 9
-
+groupby[]
 #CAUTION!!! DON'T EDIT THIS PART START
 # This test print should print the length of variable monthly_data
 print(len(monthly_data))
