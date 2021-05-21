@@ -17,6 +17,14 @@ import numpy as np
 data = None
 
 # YOUR CODE HERE 1
+# Define relative path to the file
+fp = r'data/1091402.txt'
+# Read data 
+data = pd.read_csv(fp, skiprows=2,delim_whitespace = True, na_values =-9999)
+data.head()
+data.tail()
+
+
 
 # ### Part 2 
 # 
@@ -27,7 +35,9 @@ data = None
 
 tavg_nodata_count = None
 #YOUR CODE HERE 2
-
+data['TAVG'] = data['37']
+tavg = data.loc[:,'TAVG']
+tavg_nodata_count = tavg.isnull().sum()
 
 #CAUTION!!! DON'T EDIT THIS PART START
 # Print out the solution:
@@ -40,6 +50,9 @@ print('Number of no-data values in column "TAVG":',tavg_nodata_count)
 
 tmin_nodata_count = None
 #YOUR CODE HERE 3
+data['TMIN'] = data['34']
+tmin = data.loc[:,'TMIN']
+tmin_nodata_count = tmin.isnull().sum()
 
 #CAUTION!!! DON'T EDIT THIS PART START
 # Print out the solution:
@@ -52,6 +65,9 @@ print('Number of no-data values in column "TMIN":', tmin_nodata_count)
 
 day_count = None 
 #YOUR CODE HERE 4
+data['DATE'] = data['19520101']
+d = data.loc[:,'DATE']
+day_count = len(d)
 
 #CAUTION!!! DON'T EDIT THIS PART START
 # Print out the solution:
@@ -61,10 +77,9 @@ print("Number of days:", day_count)
 # - Find the date of the oldest (first) observation
 #     - Assign your answer into a variable called `first_obs`
 
-
 first_obs = None
- 
 # YOUR CODE HERE 5
+first_obs = d.min()
 
 #CAUTION!!! DON'T EDIT THIS PART START
 # Print out the solution:
@@ -77,6 +92,7 @@ print('Date of the first observation:',first_obs)
 last_obs = None
 
 # YOUR CODE HERE 6
+last_obs = d.max()
 
 #CAUTION!!! DON'T EDIT THIS PART START
 # Print out the solution:
@@ -90,6 +106,7 @@ print('Date of the last observation:', last_obs)
 avg_temp = None
 
 # YOUR CODE HERE 7
+avg_temp = tavg.mean()
 
 #CAUTION!!! DON'T EDIT THIS PART START
 # Print out the solution:
@@ -103,6 +120,10 @@ print('Average temperature (F) for the whole dataset:', round(avg_temp, 2))
 avg_temp_1969 = None
 
 # YOUR CODE HERE 8
+data['TMAX'] = data['39']
+t = data[(data["DATE"] > '19690501')&(data["DATE"]< '19690831')]
+tmax = t["TMAX"]
+avg_temp_1969 = tmax.mean()
 
 #CAUTION!!! DON'T EDIT THIS PART START
 # This test print should print a number
