@@ -66,8 +66,8 @@ print('Number of no-data values in column "TMIN":', tmin_nodata_count)
 day_count = None 
 #YOUR CODE HERE 4
 data['DATE'] = data['19520101']
-d = data.loc[:,'DATE']
-day_count = len(d)
+dte = data.loc[:,'DATE']
+day_count = len(dte)
 
 #CAUTION!!! DON'T EDIT THIS PART START
 # Print out the solution:
@@ -79,7 +79,7 @@ print("Number of days:", day_count)
 
 first_obs = None
 # YOUR CODE HERE 5
-first_obs = d.min()
+first_obs = dte.min()
 
 #CAUTION!!! DON'T EDIT THIS PART START
 # Print out the solution:
@@ -92,7 +92,7 @@ print('Date of the first observation:',first_obs)
 last_obs = None
 
 # YOUR CODE HERE 6
-last_obs = d.max()
+last_obs = dte.max()
 
 #CAUTION!!! DON'T EDIT THIS PART START
 # Print out the solution:
@@ -121,8 +121,7 @@ avg_temp_1969 = None
 
 # YOUR CODE HERE 8
 data['TMAX'] = data['39']
-t = data[(data["DATE"] > '19690501')&(data["DATE"]< '19690831')]
-tmax = t["TMAX"]
+tmax = data[(data['DATE']<19690901)&(data['DATE']>19690431)].loc[:,'TMAX']
 avg_temp_1969 = tmax.mean()
 
 #CAUTION!!! DON'T EDIT THIS PART START
@@ -137,7 +136,8 @@ print('Average temperature (F) for the Summer of 69:', round(avg_temp_1969, 2))
 monthly_data = None
 
 # YOUR CODE HERE 9
-groupby[]
+data['TEMP_KELVIN']=data['TEMP_CELSIUS']+273.15
+
 #CAUTION!!! DON'T EDIT THIS PART START
 # This test print should print the length of variable monthly_data
 print(len(monthly_data))
